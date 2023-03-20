@@ -27,7 +27,8 @@ public class TarefaFinalEDMaps {
         //importa o arquivo
         File arquivo = new File("/Users/Usuario/Downloads/leipzig100k.txt"); //adapta pro caminho do arquivo no seu computador
         Path path = Paths.get("/Users/Usuario/Downloads/leipzig100k.txt");
-		
+	String[] Palavras = new String[]{"Lisbon", "NASA", "Kyunghee", "Konkuk", "Sogang", "momentarily", "rubella", "vaccinations", "government", "Authorities"};
+        
         //cria três listas, uma para cada método
 	List<String> texto = Files.readAllLines(path);
 	ArrayList<String> textoP = new ArrayList<String>();
@@ -67,7 +68,28 @@ public class TarefaFinalEDMaps {
 	Duration duration3 = relogio3.elapsed();
 		
 	System.out.println(duration1.getNano() + "ns demorados pra depositar as palavras na classe HashMap");
-	System.out.println(duration2.getNano() + "ns demorados pra depositar as palavras na classe LinkedHashMap");
-	System.out.println(duration3.getNano() + "ns demorados pra depositar as palavras na classe ArrayList");
+        Stopwatch relogio4 = Stopwatch.createStarted();
+        for(String x : Palavras){
+            boolean bla = HashMapST.containsValue(x);
+        }
+        relogio4.stop();
+        System.out.println("Demorou " + (relogio4.elapsed()).getNano() + "ns para achar as 10 palavras no HashMap");
+        
+        System.out.println(duration2.getNano() + "ns demorados pra depositar as palavras na classe LinkedHashMap");
+        Stopwatch relogio5 = Stopwatch.createStarted();
+        for(String x : Palavras){
+            boolean bla = LinkedHashMapST.containsValue(x);
+        }
+        relogio5.stop();
+        System.out.println("Demorou " + (relogio5.elapsed()).getNano() + "ns para achar as 10 palavras no LinkedHashMap");
+
+        System.out.println(duration3.getNano() + "ns demorados pra depositar as palavras na classe TreeMap");
+        Stopwatch relogio6 = Stopwatch.createStarted();
+        for(String x : Palavras){
+            boolean bla = TreeMapST.containsValue(x);
+        }
+        relogio6.stop();
+        System.out.println("Demorou " + (relogio6.elapsed()).getNano() + "ns para achar as 10 palavras no TreeMap");
+	}
 	}
 }

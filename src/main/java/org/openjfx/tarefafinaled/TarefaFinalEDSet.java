@@ -22,7 +22,7 @@ public class TarefaFinalEDSet {
 		
 		File arquivo = new File("/Users/claud/Downloads/leipzig100k.txt"); //adapta pro caminho do arquivo no seu computador
 		Path path = Paths.get("/Users/claud/Downloads/leipzig100k.txt");
-		
+		String[] Palavras = new String[]{"Lisbon", "NASA", "Kyunghee", "Konkuk", "Sogang", "momentarily", "rubella", "vaccinations", "government", "Authorities"};
 		List<String> texto = Files.readAllLines(path);
 		ArrayList<String> textoP = new ArrayList<String>();
 
@@ -60,9 +60,29 @@ public class TarefaFinalEDSet {
 		relogio3.stop();
 		Duration duration3 = relogio3.elapsed();
 		
-	System.out.println(duration1.getNano() + "ns demorados pra depositar as palavras na classe Vector");
-        System.out.println(duration2.getNano() + "ns demorados pra depositar as palavras na classe LinkedList");
-        System.out.println(duration3.getNano() + "ns demorados pra depositar as palavras na classe ArrayList");
+	System.out.println(duration1.getNano() + "ns demorados pra depositar as palavras na classe HashSet");
+        Stopwatch relogio4 = Stopwatch.createStarted();
+        for(String x : Palavras){
+            boolean bla = HashSetST.contains(x);
+        }
+        relogio4.stop();
+        System.out.println("Demorou " + (relogio4.elapsed()).getNano() + "ns para achar as 10 palavras no HashSet");
+        
+        System.out.println(duration2.getNano() + "ns demorados pra depositar as palavras na classe LinkedHashSet");
+        Stopwatch relogio5 = Stopwatch.createStarted();
+        for(String x : Palavras){
+            boolean bla = LinkedHashSetST.contains(x);
+        }
+        relogio5.stop();
+        System.out.println("Demorou " + (relogio5.elapsed()).getNano() + "ns para achar as 10 palavras no LinkedHashSet");
+
+        System.out.println(duration3.getNano() + "ns demorados pra depositar as palavras na classe TreeSet");
+        Stopwatch relogio6 = Stopwatch.createStarted();
+        for(String x : Palavras){
+            boolean bla = TreeSetST.contains(x);
+        }
+        relogio6.stop();
+        System.out.println("Demorou " + (relogio6.elapsed()).getNano() + "ns para achar as 10 palavras no TreeSet");
 	}
 
 }
