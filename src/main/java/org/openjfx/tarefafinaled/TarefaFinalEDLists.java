@@ -76,4 +76,3 @@ public class TarefaFinalEDLists {
 	System.out.println("Tempo demorado " + duration3.getNano());
 	}
     }
-}
