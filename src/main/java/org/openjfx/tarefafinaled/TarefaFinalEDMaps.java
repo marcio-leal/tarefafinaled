@@ -66,8 +66,8 @@ public class TarefaFinalEDMaps {
 	relogio3.stop();
 	Duration duration3 = relogio3.elapsed();
 		
-	System.out.println("Tempo demorado " + duration1.getNano());
-	System.out.println("Tempo demorado " + duration2.getNano());
-	System.out.println("Tempo demorado " + duration3.getNano());
+	System.out.println(duration1.getNano() + "ns demorados pra depositar as palavras na classe HashMap");
+	System.out.println(duration2.getNano() + "ns demorados pra depositar as palavras na classe LinkedHashMap");
+	System.out.println(duration3.getNano() + "ns demorados pra depositar as palavras na classe ArrayList");
 	}
 }
