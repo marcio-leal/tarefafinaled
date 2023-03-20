@@ -32,7 +32,7 @@ public class TarefaFinalEDLists {
          //importa o arquivo
         File arquivo = new File("/Users/Usuario/Downloads/leipzig100k.txt"); //adapta pro caminho do arquivo no seu computador
         Path path = Paths.get("/Users/Usuario/Downloads/leipzig100k.txt");
-		
+	String[] Palavras = new String[]{"Lisbon", "NASA", "Kyunghee", "Konkuk", "Sogang", "momentarily", "rubella", "vaccinations", "government", "Authorities"};	
         //cria três listas, uma para cada método
 	List<String> texto = Files.readAllLines(path);
 	ArrayList<String> textoP = new ArrayList<String>();
@@ -71,8 +71,29 @@ public class TarefaFinalEDLists {
 	relogio3.stop();
 	Duration duration3 = relogio3.elapsed();
 		
-	System.out.println("Tempo demorado " + duration1.getNano());
-	System.out.println("Tempo demorado " + duration2.getNano());
-	System.out.println("Tempo demorado " + duration3.getNano());
+        //começam as mensagens e os testes de retrieval
+        System.out.println(duration1.getNano() + "ns demorados pra depositar as palavras na classe Vector");
+        Stopwatch relogio4 = Stopwatch.createStarted();
+        for(String x : Palavras){
+            boolean bla = VectorST.contains(x);
+        }
+        relogio4.stop();
+        System.out.println("Demorou " + (relogio4.elapsed()).getNano() + "ns para achar as 10 palavras no Vector");
+        
+        System.out.println(duration2.getNano() + "ns demorados pra depositar as palavras na classe LinkedList");
+        Stopwatch relogio5 = Stopwatch.createStarted();
+        for(String x : Palavras){
+            boolean bla = LinkedListST.contains(x);
+        }
+        relogio5.stop();
+        System.out.println("Demorou " + (relogio5.elapsed()).getNano() + "ns para achar as 10 palavras no LinkedList");
+
+        System.out.println(duration3.getNano() + "ns demorados pra depositar as palavras na classe ArrayList");
+        Stopwatch relogio6 = Stopwatch.createStarted();
+        for(String x : Palavras){
+            boolean bla = ArrayListST.contains(x);
+        }
+        relogio6.stop();
+        System.out.println("Demorou " + (relogio6.elapsed()).getNano() + "ns para achar as 10 palavras no ArrayList");
 	}
     }
